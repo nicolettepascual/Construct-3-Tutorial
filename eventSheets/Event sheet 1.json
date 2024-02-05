@@ -45,12 +45,11 @@
 			"eventType": "block",
 			"conditions": [
 				{
-					"id": "on-click",
-					"objectClass": "Mouse",
-					"sid": 243074827617073,
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 277343868275888,
 					"parameters": {
-						"mouse-button": "left",
-						"click-type": "clicked"
+						"interval-seconds": "0.3"
 					}
 				}
 			],
@@ -345,6 +344,12 @@
 				}
 			],
 			"sid": 409593703990494
+		},
+		{
+			"eventType": "block",
+			"conditions": [],
+			"actions": [],
+			"sid": 303386435002871
 		}
 	],
 	"sid": 675501517584752
