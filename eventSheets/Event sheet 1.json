@@ -156,6 +156,42 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 552749345010246,
+					"parameters": {
+						"object": "Monster"
+					}
+				},
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 659466535789016,
+					"parameters": {
+						"first-value": "distance(Player.X, Player.Y, Monster.X, Monster.Y)",
+						"comparison": 2,
+						"second-value": "900"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "rotate-toward-position",
+					"objectClass": "Monster",
+					"sid": 554024080035786,
+					"parameters": {
+						"degrees": "1",
+						"x": "Player.X",
+						"y": "Player.Y"
+					}
+				}
+			],
+			"sid": 762493822774202
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "compare-instance-variable",
 					"objectClass": "Monster",
 					"sid": 160568272100044,
@@ -238,9 +274,13 @@
 			],
 			"actions": [
 				{
-					"id": "destroy",
+					"id": "subtract-from-instvar",
 					"objectClass": "Player",
-					"sid": 183449949216758
+					"sid": 867177273903481,
+					"parameters": {
+						"instance-variable": "PlayerHealth",
+						"value": "10"
+					}
 				}
 			],
 			"sid": 378709337595741
@@ -347,9 +387,26 @@
 		},
 		{
 			"eventType": "block",
-			"conditions": [],
-			"actions": [],
-			"sid": 303386435002871
+			"conditions": [
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Player",
+					"sid": 631595705547176,
+					"parameters": {
+						"instance-variable": "PlayerHealth",
+						"comparison": 3,
+						"value": "0"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Player",
+					"sid": 602353675346497
+				}
+			],
+			"sid": 912123941335302
 		}
 	],
 	"sid": 675501517584752

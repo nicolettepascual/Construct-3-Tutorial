@@ -55,7 +55,9 @@
 						"live-preview": false
 					},
 					"uid": 5,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"PlayerHealth": 100
+					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
