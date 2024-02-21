@@ -1,5 +1,998 @@
 {
 	"name": "eLogin",
-	"events": [],
-	"sid": 340398842879670
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "kPlayFabStoredDataKey",
+			"type": "string",
+			"initialValue": "RemoteStorage",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 611498410516367
+		},
+		{
+			"eventType": "variable",
+			"name": "gLBOffsetX",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 278718238426887
+		},
+		{
+			"eventType": "variable",
+			"name": "gLBOffsetY",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 628689587793213
+		},
+		{
+			"eventType": "variable",
+			"name": "gCurrentCustomID",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 766440004864442
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 411772216502831
+				}
+			],
+			"actions": [],
+			"sid": 887756984034307,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Setup our GUI objects"
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 658058464936977,
+							"parameters": {
+								"variable": "gLBOffsetX",
+								"value": "TextLBNameScore.X"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 426834251715930,
+							"parameters": {
+								"variable": "gLBOffsetY",
+								"value": "TextLBNameScore.Y"
+							}
+						},
+						{
+							"id": "destroy",
+							"objectClass": "TextLBNameScore",
+							"sid": 666070979327865
+						},
+						{
+							"id": "set-text",
+							"objectClass": "TextTitleID",
+							"sid": 664036002458436,
+							"parameters": {
+								"text": "\"TitleID: \" & kPlayFabTitleID"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "TextLeaderboardTitle",
+							"sid": 919899659229032,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "TextLog",
+							"sid": 846540714604600,
+							"parameters": {
+								"text": "\"\""
+							}
+						}
+					],
+					"sid": 727474342015165
+				},
+				{
+					"eventType": "comment",
+					"text": "Pin objects to the CustomID panel"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "9patch",
+							"sid": 844024988826875,
+							"parameters": {
+								"instance-variable": "NamedID",
+								"comparison": 0,
+								"value": "\"CustomID\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 536426395401058,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "ButtonLogin",
+									"sid": 185538152984053,
+									"parameters": {
+										"instance-variable": "PanelNamedID",
+										"comparison": 0,
+										"value": "9patch.NamedID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "pin-to-object-properties",
+									"objectClass": "ButtonLogin",
+									"sid": 754866118675542,
+									"behaviorType": "Pin",
+									"parameters": {
+										"pin-to": "9patch",
+										"x": true,
+										"y": true,
+										"angle": true,
+										"width-type": "no",
+										"height-type": "no",
+										"z": false
+									}
+								}
+							],
+							"sid": 530725336534661
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "pin-to-object-properties",
+									"objectClass": "TextCustomID",
+									"sid": 176786288519116,
+									"behaviorType": "Pin",
+									"parameters": {
+										"pin-to": "9patch",
+										"x": true,
+										"y": true,
+										"angle": true,
+										"width-type": "no",
+										"height-type": "no",
+										"z": false
+									}
+								},
+								{
+									"id": "pin-to-object-properties",
+									"objectClass": "TextInputCustomID",
+									"sid": 376379384344536,
+									"behaviorType": "Pin",
+									"parameters": {
+										"pin-to": "9patch",
+										"x": true,
+										"y": true,
+										"angle": true,
+										"width-type": "no",
+										"height-type": "no",
+										"z": false
+									}
+								}
+							],
+							"sid": 387999635855779
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Pin objects to the WelcomeBack panel"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "9patch",
+							"sid": 372063037483908,
+							"parameters": {
+								"instance-variable": "NamedID",
+								"comparison": 0,
+								"value": "\"WelcomeBack\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "TextWelcome",
+							"sid": 159809105486337,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "9patch",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "ButtonLogout",
+							"sid": 556329627220784,
+							"behaviorType": "Pin",
+							"parameters": {
+								"pin-to": "9patch",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						}
+					],
+					"sid": 771704649576207
+				},
+				{
+					"eventType": "comment",
+					"text": "Move the panels off screen until we know what state we are in."
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 722012788956330,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "9patch",
+									"sid": 917072758241711,
+									"parameters": {
+										"instance-variable": "NamedID",
+										"comparison": 0,
+										"value": "\"CustomID\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "9patch",
+									"sid": 844477908012230,
+									"parameters": {
+										"x": "10",
+										"y": "-120"
+									}
+								}
+							],
+							"sid": 779391110985269
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "9patch",
+									"sid": 859462413442488,
+									"parameters": {
+										"instance-variable": "NamedID",
+										"comparison": 0,
+										"value": "\"WelcomeBack\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "9patch",
+									"sid": 620511354873869,
+									"parameters": {
+										"x": "10",
+										"y": "-200"
+									}
+								}
+							],
+							"sid": 487741450704673
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "If we already have a PlayFab ID, then we've logged in and just update our Welcome panel."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 634897488432389,
+							"parameters": {
+								"first-value": "Functions.HasPlayFabID",
+								"comparison": 0,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 704527937705785,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "9patch",
+									"sid": 219234615607106,
+									"parameters": {
+										"instance-variable": "NamedID",
+										"comparison": 0,
+										"value": "\"WelcomeBack\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "9patch",
+									"sid": 341130399422769,
+									"parameters": {
+										"x": "10",
+										"y": "60"
+									}
+								},
+								{
+									"id": "append-text",
+									"objectClass": "TextWelcome",
+									"sid": 129721154859279,
+									"parameters": {
+										"text": "gCurrentCustomID"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "ButtonPlay",
+									"sid": 511386436892437,
+									"parameters": {
+										"mode": "enabled"
+									}
+								}
+							],
+							"sid": 479728421549653
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"callFunction": "RetrieveUserData",
+									"sid": 973593466448633
+								},
+								{
+									"callFunction": "DisplayLeaderboard",
+									"sid": 998734294412247
+								}
+							],
+							"sid": 344303966794885
+						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Otherwise, we show the login panel."
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 958948526394687
+						}
+					],
+					"actions": [],
+					"sid": 277784928254556,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "9patch",
+									"sid": 257042727828962,
+									"parameters": {
+										"instance-variable": "NamedID",
+										"comparison": 0,
+										"value": "\"CustomID\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position",
+									"objectClass": "9patch",
+									"sid": 131058800400512,
+									"parameters": {
+										"x": "10",
+										"y": "60"
+									}
+								}
+							],
+							"sid": 463609207781425
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ButtonLogin",
+					"sid": 951203449210345
+				}
+			],
+			"actions": [],
+			"sid": 833860094409524,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localCustomID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 328376820186267
+				},
+				{
+					"eventType": "variable",
+					"name": "localPlayFabID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 703234611148016
+				},
+				{
+					"eventType": "comment",
+					"text": "Grab our ID and call the appropriate Login function. WAIT for the result."
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 628804912260687,
+							"parameters": {
+								"type": "log",
+								"message": "\"LoginWith CustomID...\""
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 258372356112727,
+							"parameters": {
+								"variable": "localCustomID",
+								"value": "trim(TextInputCustomID.Text)"
+							}
+						},
+						{
+							"callFunction": "LoginWithCustomIDToPlayFab",
+							"sid": 908403547854604,
+							"parameters": [
+								"localCustomID"
+							]
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 599553154671421
+						}
+					],
+					"sid": 906071024557980,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "If no error..."
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 106174358765666,
+									"parameters": {
+										"first-value": "Functions.HasLoginError",
+										"comparison": 0,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 474256645004542,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "Login was successful. Get the PlayFabID, turn on our Play button, and store the custom ID for next time."
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 254901735681862,
+											"parameters": {
+												"variable": "localPlayFabID",
+												"value": "Functions.PlayFabID"
+											}
+										},
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 601231669546917,
+											"parameters": {
+												"type": "log",
+												"message": "\"Login: PlayFabId=\" & localPlayFabId"
+											}
+										},
+										{
+											"id": "append-text",
+											"objectClass": "TextLog",
+											"sid": 513119077447598,
+											"parameters": {
+												"text": "\"Logged in as: \" & localCustomID"
+											}
+										},
+										{
+											"id": "append-text",
+											"objectClass": "TextLog",
+											"sid": 627035967361765,
+											"parameters": {
+												"text": "newline"
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "ButtonPlay",
+											"sid": 153873560146528,
+											"parameters": {
+												"mode": "enabled"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 780273801712323,
+											"parameters": {
+												"variable": "gCurrentCustomID",
+												"value": "localCustomID"
+											}
+										}
+									],
+									"sid": 308317799091137
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "9patch",
+											"sid": 787708413760479,
+											"parameters": {
+												"instance-variable": "NamedID",
+												"comparison": 0,
+												"value": "\"CustomID\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "9patch",
+											"sid": 916001720347471,
+											"parameters": {
+												"x": "10",
+												"y": "-120"
+											}
+										}
+									],
+									"sid": 748018077828962
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "9patch",
+											"sid": 199151507683217,
+											"parameters": {
+												"instance-variable": "NamedID",
+												"comparison": 0,
+												"value": "\"WelcomeBack\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position",
+											"objectClass": "9patch",
+											"sid": 904653685283425,
+											"parameters": {
+												"x": "10",
+												"y": "60"
+											}
+										},
+										{
+											"id": "append-text",
+											"objectClass": "TextWelcome",
+											"sid": 498773846155762,
+											"parameters": {
+												"text": "gCurrentCustomID"
+											}
+										}
+									],
+									"sid": 180543315331085
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "RetrieveUserData",
+											"sid": 316132869486415
+										},
+										{
+											"callFunction": "DisplayLeaderboard",
+											"sid": 587319914546579
+										}
+									],
+									"sid": 149709122340724
+								}
+							]
+						},
+						{
+							"eventType": "comment",
+							"text": "Show any error"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 226886613539239
+								}
+							],
+							"actions": [
+								{
+									"id": "append-text",
+									"objectClass": "TextLog",
+									"sid": 839121767063799,
+									"parameters": {
+										"text": "Functions.PlayFabError_Login"
+									}
+								},
+								{
+									"id": "append-text",
+									"objectClass": "TextLog",
+									"sid": 616097619276721,
+									"parameters": {
+										"text": "newline"
+									}
+								}
+							],
+							"sid": 331383391155998
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Reset the PlayFabID inside the script, clear out global, and restart the layout, so everything starts over."
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ButtonLogout",
+					"sid": 265178786449570
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "ResetPlayFabID",
+					"sid": 511149453467415
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 880752668850193,
+					"parameters": {
+						"variable": "gCurrentCustomID",
+						"value": "\"\""
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 543343099620284
+				}
+			],
+			"sid": 782056400465643
+		},
+		{
+			"eventType": "comment",
+			"text": "Go to the original game layout."
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-clicked",
+					"objectClass": "ButtonPlay",
+					"sid": 719769336745771
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 453241062339706,
+					"parameters": {
+						"layout": "Layout 1"
+					}
+				}
+			],
+			"sid": 955645814049446
+		},
+		{
+			"eventType": "comment",
+			"text": "RetrieveUserData()"
+		},
+		{
+			"eventType": "comment",
+			"text": "Get our user specific remote data, and load it back into the data-dictionary."
+		},
+		{
+			"functionName": "RetrieveUserData",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 123317026051392,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localPlayFabUserData",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 808745708306938
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "clear",
+							"objectClass": "DictionaryData",
+							"sid": 149824585080883
+						},
+						{
+							"callFunction": "GetUserDataFromPlayFab",
+							"sid": 988875035871677,
+							"parameters": [
+								"kPlayFabStoredDataKey"
+							]
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 467841703032600
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 254574077240943,
+							"parameters": {
+								"variable": "localPlayFabUserData",
+								"value": "Functions.PlayFabUserData(kPlayFabStoredDataKey)"
+							}
+						},
+						{
+							"id": "append-text",
+							"objectClass": "TextLog",
+							"sid": 156124677337914,
+							"parameters": {
+								"text": "\"localPlayFabUserData=\"&localPlayFabUserData"
+							}
+						},
+						{
+							"id": "append-text",
+							"objectClass": "TextLog",
+							"sid": 255310916901664,
+							"parameters": {
+								"text": "newline"
+							}
+						}
+					],
+					"sid": 134360287128557
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "DisplayLeaderboard()"
+		},
+		{
+			"eventType": "comment",
+			"text": "Get the leaderboard data and build up our leaderboard GUI table. Due to limited Viewport space, I only retrieve 5 items."
+		},
+		{
+			"functionName": "DisplayLeaderboard",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 564940707346188,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "GetLeaderboardFromPlayFab",
+							"sid": 864437969294003,
+							"parameters": [
+								"5"
+							]
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 588493176999216
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "TextLeaderboardTitle",
+							"sid": 635297608310282,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 335058509389073,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 194790050905176,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "ArrayLeaderboard.Width-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 745285934193750,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 438583779176618,
+											"parameters": {
+												"object-to-create": "TextLBNameScore",
+												"layer": "1",
+												"x": "gLBOffsetX",
+												"y": "gLBOffsetY + loopindex * 20",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "TextLBNameScore",
+											"sid": 983909121103103,
+											"parameters": {
+												"text": "ArrayLeaderboard.At(loopindex,0)"
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 731256980061404,
+											"parameters": {
+												"object-to-create": "TextLBNameScore",
+												"layer": "1",
+												"x": "gLBOffsetX + 170",
+												"y": "gLBOffsetY + loopindex * 20",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "TextLBNameScore",
+											"sid": 292133436220168,
+											"parameters": {
+												"text": "ArrayLeaderboard.At(loopindex,1)"
+											}
+										},
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 336917059009211,
+											"parameters": {
+												"type": "log",
+												"message": "ArrayLeaderboard.At(loopindex, 0) &\",\"& ArrayLeaderboard.At(loopindex, 1)"
+											}
+										}
+									],
+									"sid": 683059246317742
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"sid": 793528156858018
 }

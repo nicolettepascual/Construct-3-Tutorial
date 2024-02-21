@@ -1,5 +1,1112 @@
 {
 	"name": "ePlayFab",
-	"events": [],
-	"sid": 355014450932168
+	"events": [
+		{
+			"eventType": "comment",
+			"text": "Note: Must turn on \"Allow client to post player statistics\" for leaderboard/statistics to work. Ref: https://developer.playfab.com/en-US/r/t/<titleid>/settings/api-features"
+		},
+		{
+			"eventType": "comment",
+			"text": "------------------------------------------"
+		},
+		{
+			"eventType": "comment",
+			"text": "This is your unique game ID from PlayFab."
+		},
+		{
+			"eventType": "variable",
+			"name": "kPlayFabTitleID",
+			"type": "string",
+			"initialValue": "C8788",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 316482763403857
+		},
+		{
+			"eventType": "comment",
+			"text": "This is the name of your PlayFab leaderboard. If you need multiple leaderboards, you'd need to alter the functions to take the name as a parameter."
+		},
+		{
+			"eventType": "variable",
+			"name": "gPlayFabHighScoreTableName",
+			"type": "string",
+			"initialValue": "HighScore",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 934780689064937
+		},
+		{
+			"eventType": "comment",
+			"text": "Call PlayFab to get a named leaderboard. Specify how many items to retrieve."
+		},
+		{
+			"functionName": "GetLeaderboardFromPlayFab",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [
+				{
+					"name": "paramCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 231827953971055
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "await PlayFab_GetLeaderboard(localVars.paramCount, runtime.globalVars.gPlayFabHighScoreTableName);"
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 408150906766456
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 406419919272774,
+					"parameters": {
+						"type": "log",
+						"message": "\"Leaderboard done.\""
+					}
+				}
+			],
+			"sid": 916762421264684,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Once we have the loaderboard loaded into the script, we can pull out each item and transfer it to an array for easy processing."
+				},
+				{
+					"eventType": "variable",
+					"name": "localLeaderboardCount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 381654606307200
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localLeaderboardCount = PlayFab_GetLeaderboardCount();"
+						},
+						{
+							"id": "set-size",
+							"objectClass": "ArrayLeaderboard",
+							"sid": 341150006009736,
+							"parameters": {
+								"width": "paramCount",
+								"height": "2",
+								"depth": "1"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 608739226758472,
+							"parameters": {
+								"type": "log",
+								"message": "\"Array width=\" & paramCount"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 772551294757087,
+							"parameters": {
+								"type": "log",
+								"message": "\"Data width=\" & localLeaderboardCount"
+							}
+						}
+					],
+					"sid": 445762772116207
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 726017585480828,
+							"parameters": {
+								"variable": "localLeaderboardCount",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 964094854064238,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "localStatName",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 342495848205258
+						},
+						{
+							"eventType": "variable",
+							"name": "localStatScore",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 901408706935101
+						},
+						{
+							"eventType": "variable",
+							"name": "localIndex",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 893818126968599
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 771805755133830,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "0",
+										"end-index": "paramCount-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 369263126474454,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 182909216899776,
+											"parameters": {
+												"first-value": "loopindex",
+												"comparison": 2,
+												"second-value": "localLeaderboardCount"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 136676367416741,
+											"parameters": {
+												"variable": "localIndex",
+												"value": "loopindex"
+											}
+										},
+										{
+											"type": "script",
+											"script": "localVars.localStatName = PlayFab_GetLeaderboardItem(localVars.localIndex,\"name\");\nlocalVars.localStatScore = PlayFab_GetLeaderboardItem(localVars.localIndex,\"score\");"
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "ArrayLeaderboard",
+											"sid": 352119828987682,
+											"parameters": {
+												"x": "loopindex",
+												"y": "0",
+												"value": "localStatName"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "ArrayLeaderboard",
+											"sid": 549849815740368,
+											"parameters": {
+												"x": "loopindex",
+												"y": "1",
+												"value": "localStatScore"
+											}
+										},
+										{
+											"id": "log",
+											"objectClass": "Browser",
+											"sid": 532572115658865,
+											"parameters": {
+												"type": "log",
+												"message": "\"LB(\" & loopindex & \"):\" & localStatName & \",\" & localStatScore"
+											}
+										}
+									],
+									"sid": 572328656897911
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 481327554857423
+										}
+									],
+									"actions": [
+										{
+											"id": "set-at-xy",
+											"objectClass": "ArrayLeaderboard",
+											"sid": 261411034660166,
+											"parameters": {
+												"x": "loopindex",
+												"y": "0",
+												"value": "\"~\""
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "ArrayLeaderboard",
+											"sid": 750252280843312,
+											"parameters": {
+												"x": "loopindex",
+												"y": "1",
+												"value": "0"
+											}
+										}
+									],
+									"sid": 353841131063756
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Call PlayFab to "
+		},
+		{
+			"functionName": "SubmitHighScoreToPlayFab",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [
+				{
+					"name": "paramScore",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 652476339303386
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "await PlayFab_UpdatePlayerStatistics(runtime.globalVars.gPlayFabHighScoreTableName,localVars.paramScore);"
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 109918122451367
+				},
+				{
+					"id": "log",
+					"objectClass": "Browser",
+					"sid": 970829966809965,
+					"parameters": {
+						"type": "log",
+						"message": "\"HighScore submitted: \" & Score"
+					}
+				}
+			],
+			"sid": 101707660135513
+		},
+		{
+			"functionName": "GetUserDataFromPlayFab",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [
+				{
+					"name": "paramUserDataID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 238333606472844
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "await PlayFab_GetUserData(localVars.paramUserDataID);"
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 712850433733809
+				}
+			],
+			"sid": 659813401954399
+		},
+		{
+			"eventType": "comment",
+			"text": "Send your named user data to PlayFab. Data can be a JSON string from a Dictionary, or Array, for example. Free data is limited, so check the PlayFab documentation on limits."
+		},
+		{
+			"functionName": "SubmitUserDataToPlayFab",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [
+				{
+					"name": "paramUserDataID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 647394670667250
+				},
+				{
+					"name": "paramDataString",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 913214579964854
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 647397587213229,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "await PlayFab_UpdateUserData(localVars.paramUserDataID, localVars.paramDataString);"
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 850860920115747
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 598367893438998,
+							"parameters": {
+								"type": "log",
+								"message": "\"Dictionary submitted - \" & paramUserDataID & \",\" & paramDataString"
+							}
+						}
+					],
+					"sid": 345068508385887
+				}
+			]
+		},
+		{
+			"eventType": "comment",
+			"text": "Return the PlayFabID that was retrieved from the last Login call."
+		},
+		{
+			"functionName": "PlayFabID",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 842629919087679,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localPlayFabId",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 230744941533134
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localPlayFabId = PlayFab_GetPlayFabID();\n"
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 410662654093617,
+							"parameters": {
+								"value": "localPlayFabId"
+							}
+						}
+					],
+					"sid": 597797996045666
+				}
+			]
+		},
+		{
+			"functionName": "PlayFabUserData",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "paramUserDataID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 896788734026538
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 302647961963484,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localData",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 529025612517961
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localData = PlayFab_UserData(localVars.paramUserDataID);\n"
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 233786837934892,
+							"parameters": {
+								"value": "localData"
+							}
+						}
+					],
+					"sid": 483002798287570
+				}
+			]
+		},
+		{
+			"functionName": "PlayFabDisplayName",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 611549020131689,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localData",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 302867965842682
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localData = PlayFab_GetDisplayName();"
+						}
+					],
+					"sid": 776576224500019,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 110571629015779,
+									"parameters": {
+										"first-value": "len(localData)",
+										"comparison": 0,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"script": "localVars.localData = PlayFab_GetPlayFabID();"
+								}
+							],
+							"sid": 870834895369124
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 873073792561866,
+							"parameters": {
+								"value": "localData"
+							}
+						}
+					],
+					"sid": 778993066413207
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 720108515932079
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"script": "PlayFab_SetTitleId(runtime.globalVars.kPlayFabTitleID);"
+				}
+			],
+			"sid": 886650362316928,
+			"disabled": true
+		},
+		{
+			"eventType": "comment",
+			"text": "Register a new account with PlayFab."
+		},
+		{
+			"eventType": "comment",
+			"text": "NOTE!!! I'm defaulting the DisplayName to be the Username. Without a display name, the leaderboard only displays the user's PlayFabID, which seems rather useless, but any other mechanism to get user details seems to return the email address as well as the username, which is too much detail. If you don't want this behaviour, you'll need to either pass in a display name, or figure out how you want to deal with this."
+		},
+		{
+			"functionName": "RegisterUserWithPlayFab",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [
+				{
+					"name": "paramEmail",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 880930399037139
+				},
+				{
+					"name": "paramPassword",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 542808527111570
+				},
+				{
+					"name": "paramUsername",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 895965251589469
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "await PlayFab_RegisterUser(runtime.globalVars.kPlayFabTitleID, localVars.paramUsername, localVars.paramEmail, localVars.paramPassword, localVars.paramUsername);"
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 787148284069378
+				}
+			],
+			"sid": 493071125331261
+		},
+		{
+			"functionName": "PlayFabError_RegisterUser",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 688587047154592,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localData",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 514192796488296
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localData = PlayFab_Error(\"RegisterPlayFabUser\");"
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 194523859793722,
+							"parameters": {
+								"value": "localData"
+							}
+						}
+					],
+					"sid": 880293686328729
+				}
+			]
+		},
+		{
+			"functionName": "PlayFabError_Login",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 328394402506453,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localData",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 737324040252081
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localData = PlayFab_Error(\"LoginWithXXX\");"
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 189740527100612,
+							"parameters": {
+								"value": "localData"
+							}
+						}
+					],
+					"sid": 788716937881094
+				}
+			]
+		},
+		{
+			"functionName": "HasPlayFabID",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 278370377753007,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 444359370853709,
+							"parameters": {
+								"first-value": "len(Functions.PlayFabID)",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 769114022500003,
+							"parameters": {
+								"value": "1"
+							}
+						}
+					],
+					"sid": 426097237213900
+				}
+			]
+		},
+		{
+			"functionName": "HasLoginError",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 454270514473540,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 524041378804254,
+							"parameters": {
+								"first-value": "len(Functions.PlayFabError_Login)",
+								"comparison": 4,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 183859709199497,
+							"parameters": {
+								"value": "1"
+							}
+						}
+					],
+					"sid": 119192071312344
+				}
+			]
+		},
+		{
+			"functionName": "PlayFabAddUsernamePassword",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": true,
+			"functionParameters": [
+				{
+					"name": "paramEmail",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 623737830594031
+				},
+				{
+					"name": "paramPassword",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 678971964333305
+				},
+				{
+					"name": "paramUsername",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 304489307633318
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "await PlayFab_AddUsernamePassword(localVars.paramEmail, localVars.paramPassword, localVars.paramUsername);"
+				}
+			],
+			"sid": 988436775623755
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "GroupLogin",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "comment",
+					"text": "Login to the PlayFab Title with a given CustomID."
+				},
+				{
+					"functionName": "LoginWithCustomIDToPlayFab",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": true,
+					"functionParameters": [
+						{
+							"name": "paramPlayFabID",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 279642636190679
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "await PlayFab_LoginWithCustomID(runtime.globalVars.kPlayFabTitleID, localVars.paramPlayFabID,true);"
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 463835390551482
+						}
+					],
+					"sid": 566899506625317
+				},
+				{
+					"functionName": "LoginWithEmailPlayFab",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": true,
+					"functionParameters": [
+						{
+							"name": "paramEmail",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 562793725250672
+						},
+						{
+							"name": "paramPassword",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 132207976791173
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "await PlayFab_LoginWithEmail(runtime.globalVars.kPlayFabTitleID, localVars.paramEmail, localVars.paramPassword);"
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 171057057218363
+						}
+					],
+					"sid": 314471555878806
+				},
+				{
+					"functionName": "LoginWithPlayFab",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": true,
+					"functionParameters": [
+						{
+							"name": "paramUsername",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 108844010854969
+						},
+						{
+							"name": "paramPassword",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 128454702332851
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "await PlayFab_LoginWithPlayFab(runtime.globalVars.kPlayFabTitleID, localVars.paramUsername, localVars.paramPassword);"
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 501374214372615
+						}
+					],
+					"sid": 155542200818861
+				}
+			],
+			"sid": 503266888685079
+		},
+		{
+			"functionName": "ResetPlayFabID",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"script": "PlayFab_ResetPlayFabID();"
+				}
+			],
+			"sid": 728285215390330
+		},
+		{
+			"functionName": "HasUserAccountError",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 976362526827384,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "localData",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 358837902323606
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"script": "localVars.localData = PlayFab_Error(\"GetAccountInfo\");"
+						}
+					],
+					"sid": 116155342573443,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 407832886423769,
+									"parameters": {
+										"first-value": "len(localData)",
+										"comparison": 4,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 858582473731217,
+									"parameters": {
+										"value": "1"
+									}
+								}
+							],
+							"sid": 359959469695388
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 317875781152951
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"script": "PlayFab_LogSDKDetails();"
+				}
+			],
+			"sid": 846092132564559
+		}
+	],
+	"sid": 603095362258106
 }

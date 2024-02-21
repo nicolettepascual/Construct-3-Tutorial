@@ -193,10 +193,36 @@
 	},
 	"rootFileFolders": {
 		"script": {
-			"items": [],
+			"items": [
+				{
+					"name": "Import.js",
+					"type": "application/javascript",
+					"sid": 492022405828918,
+					"script-info": {
+						"purpose": "imports-for-events"
+					}
+				},
+				{
+					"name": "PlayFab.js",
+					"type": "application/javascript",
+					"sid": 644798203822711,
+					"script-info": {
+						"purpose": "main"
+					}
+				}
+			],
 			"subfolders": [
 				{
-					"items": [],
+					"items": [
+						{
+							"name": "PlayFabClientApi.js",
+							"type": "application/javascript",
+							"sid": 907720866906584,
+							"script-info": {
+								"purpose": "none"
+							}
+						}
+					],
 					"subfolders": [],
 					"name": "PlayFabSDK"
 				}
