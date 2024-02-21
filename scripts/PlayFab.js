@@ -2,7 +2,7 @@
 // This is a proxy to the official PlayFab SDK, converting calls to 'async', which maps to C3 better.
 //
 // 2021-04-11: updated to support Modules
-import {PlayFab, PlayFabClientSDK} from "./PlayFabClientApi.js";
+import {PlayFab, PlayFabClientSDK} from "./PlayFabSDK/PlayFabClientApi.js";
 
 
 runOnStartup(async runtime =>
