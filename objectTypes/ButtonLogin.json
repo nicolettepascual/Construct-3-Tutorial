@@ -1,0 +1,36 @@
+{
+	"name": "ButtonLogin",
+	"plugin-id": "Button",
+	"sid": 162216136255132,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "PanelID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 733206766567518
+		},
+		{
+			"name": "LoginType",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 508333082455546
+		},
+		{
+			"name": "PanelNamedID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 693543141260134
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 213691868972036
+		}
+	]
+}

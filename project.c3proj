@@ -22,6 +22,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Button",
+			"name": "Button",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Dictionary",
 			"name": "Dictionary",
 			"author": "Scirra",
@@ -50,6 +57,13 @@
 		},
 		{
 			"type": "plugin",
+			"id": "NinePatch",
+			"name": "9-patch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
@@ -59,6 +73,13 @@
 			"type": "plugin",
 			"id": "Text",
 			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TextBox",
+			"name": "Text input",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -87,6 +108,13 @@
 			"type": "behavior",
 			"id": "Fade",
 			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pin",
+			"name": "Pin",
 			"author": "Scirra",
 			"bundled": false
 		},
@@ -127,7 +155,18 @@
 			"ArrayLeaderboard",
 			"LocalStorage",
 			"DictionaryPlayFab",
-			"DictionaryData"
+			"DictionaryData",
+			"TextLog",
+			"TextLBNameScore",
+			"TextLeaderboardTitle",
+			"ButtonPlay",
+			"TextTitleID",
+			"9patch",
+			"TextWelcome",
+			"ButtonLogout",
+			"TextCustomID",
+			"TextInputCustomID",
+			"ButtonLogin"
 		],
 		"subfolders": []
 	},
@@ -139,20 +178,29 @@
 	},
 	"layouts": {
 		"items": [
-			"Layout 1"
+			"Layout 1",
+			"Login"
 		],
 		"subfolders": []
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"Event sheet 1",
+			"eLogin",
+			"ePlayFab"
 		],
 		"subfolders": []
 	},
 	"rootFileFolders": {
 		"script": {
 			"items": [],
-			"subfolders": []
+			"subfolders": [
+				{
+					"items": [],
+					"subfolders": [],
+					"name": "PlayFabSDK"
+				}
+			]
 		},
 		"sound": {
 			"items": [],
@@ -307,5 +355,5 @@
 	},
 	"viewportWidth": 854,
 	"viewportHeight": 480,
-	"firstLayout": null
+	"firstLayout": "Login"
 }

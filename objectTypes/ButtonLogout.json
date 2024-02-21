@@ -1,0 +1,14 @@
+{
+	"name": "ButtonLogout",
+	"plugin-id": "Button",
+	"sid": 463191295089293,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 984777330621169
+		}
+	]
+}
