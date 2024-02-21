@@ -1,7 +1,7 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 36802,
-	"name": "GhostShooter",
+	"savedWithRelease": 37900,
+	"name": "Construct-3-Tutorial",
 	"runtime": "c3",
 	"useWorker": "auto",
 	"bundleAddons": false,
@@ -246,6 +246,10 @@
 				"subfolders": []
 			}
 		]
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
 	},
 	"properties": {
 		"description": "",
