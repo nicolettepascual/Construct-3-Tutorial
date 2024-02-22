@@ -1,5 +1,5 @@
 // NOTE: This definition file is auto generated - any changes you make will not be saved
-// 2/21/2024 11:11:20 AM
+// 2/22/2024 11:05:20 AM
 
 declare function runOnStartup(cb: (runtime: IRuntime) => void): void;
 
@@ -43,6 +43,13 @@ type VariableType = Record<string, string | boolean | number | null | undefined>
 
 interface IRuntimeObjects {
 	['TiledBackground']: IObjectClass<ITiledBackground>;
+	['TextWelcome']: IObjectClass<ITextWelcome>;
+	['TextTitleID']: IObjectClass<ITextTitleID>;
+	['TextLog']: IObjectClass<ITextLog>;
+	['TextLeaderboardTitle']: IObjectClass<ITextLeaderboardTitle>;
+	['TextLBNameScore']: IObjectClass<ITextLBNameScore>;
+	['TextInputCustomID']: IObjectClass<ITextInputCustomID>;
+	['TextCustomID']: IObjectClass<ITextCustomID>;
 	['Text']: IObjectClass<IText>;
 	['Player']: IObjectClass<IPlayer>;
 	['Mouse']: IObjectClass<IMouse>;
@@ -52,14 +59,30 @@ interface IRuntimeObjects {
 	['Explosion']: IObjectClass<IExplosion>;
 	['DictionaryPlayFab']: IObjectClass<IDictionaryPlayFab>;
 	['DictionaryData']: IObjectClass<IDictionaryData>;
+	['ButtonPlay']: IObjectClass<IButtonPlay>;
+	['ButtonLogout']: IObjectClass<IButtonLogout>;
+	['ButtonLogin']: IObjectClass<IButtonLogin>;
 	['Bullet']: IObjectClass<IBullet>;
 	['Browser']: IObjectClass<IBrowser>;
 	['ArrayLeaderboard']: IObjectClass<IArrayLeaderboard>;
+	['9patch']: IObjectClass<I9patch>;
 }
 
 interface IGlobalVars extends VariableType {
 	/**  **/
 	["Score"]: number
+	/**  **/
+	["gPlayFabHighScoreTableName"]: string
+	/**  **/
+	readonly ["kPlayFabTitleID"]: string
+	/**  **/
+	["gCurrentCustomID"]: string
+	/**  **/
+	["gLBOffsetY"]: number
+	/**  **/
+	["gLBOffsetX"]: number
+	/**  **/
+	readonly ["kPlayFabStoredDataKey"]: string
 }
 
 interface Blob {
@@ -193,6 +216,83 @@ interface ITiledBackground extends IWorldInstance {
 	behaviors: ITiledBackgroundBehaviors;
 }
 
+interface ITextWelcomeVars extends VariableType {
+	
+}
+interface ITextWelcomeBehaviors extends Record<string, IBehaviorInstance> {
+	['Pin']: IBehaviorInstance
+}
+interface ITextWelcome extends ITextInstance {
+	instVars: ITextWelcomeVars;
+	behaviors: ITextWelcomeBehaviors;
+}
+
+interface ITextTitleIDVars extends VariableType {
+	
+}
+interface ITextTitleIDBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ITextTitleID extends ITextInstance {
+	instVars: ITextTitleIDVars;
+	behaviors: ITextTitleIDBehaviors;
+}
+
+interface ITextLogVars extends VariableType {
+	
+}
+interface ITextLogBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ITextLog extends ITextInstance {
+	instVars: ITextLogVars;
+	behaviors: ITextLogBehaviors;
+}
+
+interface ITextLeaderboardTitleVars extends VariableType {
+	
+}
+interface ITextLeaderboardTitleBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ITextLeaderboardTitle extends ITextInstance {
+	instVars: ITextLeaderboardTitleVars;
+	behaviors: ITextLeaderboardTitleBehaviors;
+}
+
+interface ITextLBNameScoreVars extends VariableType {
+	
+}
+interface ITextLBNameScoreBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface ITextLBNameScore extends ITextInstance {
+	instVars: ITextLBNameScoreVars;
+	behaviors: ITextLBNameScoreBehaviors;
+}
+
+interface ITextInputCustomIDVars extends VariableType {
+	
+}
+interface ITextInputCustomIDBehaviors extends Record<string, IBehaviorInstance> {
+	['Pin']: IBehaviorInstance
+}
+interface ITextInputCustomID extends IWorldInstance {
+	instVars: ITextInputCustomIDVars;
+	behaviors: ITextInputCustomIDBehaviors;
+}
+
+interface ITextCustomIDVars extends VariableType {
+	
+}
+interface ITextCustomIDBehaviors extends Record<string, IBehaviorInstance> {
+	['Pin']: IBehaviorInstance
+}
+interface ITextCustomID extends ITextInstance {
+	instVars: ITextCustomIDVars;
+	behaviors: ITextCustomIDBehaviors;
+}
+
 interface ITextVars extends VariableType {
 	
 }
@@ -296,6 +396,44 @@ interface IDictionaryData extends IDictionaryInstance {
 	behaviors: IDictionaryDataBehaviors;
 }
 
+interface IButtonPlayVars extends VariableType {
+	
+}
+interface IButtonPlayBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface IButtonPlay extends IButtonInstance {
+	instVars: IButtonPlayVars;
+	behaviors: IButtonPlayBehaviors;
+}
+
+interface IButtonLogoutVars extends VariableType {
+	
+}
+interface IButtonLogoutBehaviors extends Record<string, IBehaviorInstance> {
+	['Pin']: IBehaviorInstance
+}
+interface IButtonLogout extends IButtonInstance {
+	instVars: IButtonLogoutVars;
+	behaviors: IButtonLogoutBehaviors;
+}
+
+interface IButtonLoginVars extends VariableType {
+	/**  **/
+	['PanelID']: number;
+	/**  **/
+	['LoginType']: string;
+	/**  **/
+	['PanelNamedID']: string;
+}
+interface IButtonLoginBehaviors extends Record<string, IBehaviorInstance> {
+	['Pin']: IBehaviorInstance
+}
+interface IButtonLogin extends IButtonInstance {
+	instVars: IButtonLoginVars;
+	behaviors: IButtonLoginBehaviors;
+}
+
 interface IBulletVars extends VariableType {
 	
 }
@@ -328,6 +466,20 @@ interface IArrayLeaderboardBehaviors extends Record<string, IBehaviorInstance> {
 interface IArrayLeaderboard extends IInstance {
 	instVars: IArrayLeaderboardVars;
 	behaviors: IArrayLeaderboardBehaviors;
+}
+
+interface I9patchVars extends VariableType {
+	/**  **/
+	['ID']: number;
+	/**  **/
+	['NamedID']: string;
+}
+interface I9patchBehaviors extends Record<string, IBehaviorInstance> {
+	
+}
+interface I9patch extends IWorldInstance {
+	instVars: I9patchVars;
+	behaviors: I9patchBehaviors;
 }
 
 
