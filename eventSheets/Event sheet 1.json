@@ -377,6 +377,19 @@
 								"variable": "Score",
 								"value": "Monster.Bullet.Speed"
 							}
+						},
+						{
+							"type": "comment",
+							"text": "Store the number of monsters killed in our dictionary."
+						},
+						{
+							"id": "add-key",
+							"objectClass": "DictionaryData",
+							"sid": 672426869862637,
+							"parameters": {
+								"key": "\"MonstersKilled\"",
+								"value": "int(DictionaryData.Get(\"MonstersKilled\")) + 1"
+							}
 						}
 					],
 					"sid": 764415209051554
@@ -401,7 +414,7 @@
 						{
 							"id": "subtract-from-instvar",
 							"objectClass": "Player",
-							"sid": 453206122759626,
+							"sid": 871109476046153,
 							"disabled": true,
 							"parameters": {
 								"instance-variable": "PlayerHealth",
@@ -411,14 +424,68 @@
 						{
 							"id": "destroy",
 							"objectClass": "Player",
-							"sid": 567481748543817
+							"sid": 185471822362563
+						},
+						{
+							"type": "comment",
+							"text": "Store the score in our dictionary."
+						},
+						{
+							"id": "add-key",
+							"objectClass": "DictionaryData",
+							"sid": 240277334462906,
+							"parameters": {
+								"key": "\"Score\"",
+								"value": "Score"
+							}
+						},
+						{
+							"type": "comment",
+							"text": "Submit the high score to PlayFab for this user."
+						},
+						{
+							"callFunction": "SubmitHighScoreToPlayFab",
+							"sid": 807346786262332,
+							"parameters": [
+								"Score"
+							]
+						},
+						{
+							"type": "comment",
+							"text": "Submit our cloud/remote data to PlayFab for this user."
+						},
+						{
+							"callFunction": "SubmitUserDataToPlayFab",
+							"sid": 341760362968705,
+							"parameters": [
+								"kPlayFabStoredDataKey",
+								"DictionaryData.AsJSON"
+							]
+						},
+						{
+							"type": "comment",
+							"text": "WAIT for both of these async functions to finish."
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 582282537293138
 						},
 						{
 							"id": "set-visible",
 							"objectClass": "GameOverText",
-							"sid": 241712626137015,
+							"sid": 611621600961346,
 							"parameters": {
 								"visibility": "visible"
+							}
+						},
+						{
+							"id": "log",
+							"objectClass": "Browser",
+							"sid": 353311403219475,
+							"parameters": {
+								"type": "log",
+								"message": "\"Score submitted and should be finished.\""
 							}
 						}
 					],
