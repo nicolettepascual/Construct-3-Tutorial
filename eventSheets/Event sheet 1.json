@@ -12,6 +12,16 @@
 			"sid": 766860522339761
 		},
 		{
+			"eventType": "variable",
+			"name": "MonsterSpeed",
+			"type": "number",
+			"initialValue": "80",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 790598693946678
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "System",
@@ -34,6 +44,14 @@
 							"sid": 338247250818417,
 							"parameters": {
 								"angle": "random(360)"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "GameOverText",
+							"sid": 603223472996901,
+							"parameters": {
+								"visibility": "invisible"
 							}
 						}
 					],
@@ -129,6 +147,15 @@
 								"create-hierarchy": false,
 								"template-name": "\"\""
 							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "Monster",
+							"sid": 237713023336051,
+							"behaviorType": "Bullet",
+							"parameters": {
+								"speed": "MonsterSpeed"
+							}
 						}
 					],
 					"sid": 507137766892686
@@ -172,6 +199,62 @@
 						}
 					],
 					"sid": 857942447537979
+				},
+				{
+					"eventType": "comment",
+					"text": "Reset global variables to their initial values and layout back to Login"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 954195095673519,
+							"parameters": {
+								"key": 32
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 269342419245644,
+							"parameters": {
+								"first-value": "Player.Count",
+								"comparison": 0,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 905966698097436,
+							"parameters": {
+								"variable": "MonsterSpeed",
+								"value": "80"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 704321786750247,
+							"parameters": {
+								"variable": "Score",
+								"value": "0"
+							}
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 162419584987431,
+							"parameters": {
+								"layout": "Login"
+							}
+						}
+					],
+					"sid": 244276253193285
 				}
 			],
 			"sid": 957770748132226
@@ -202,6 +285,15 @@
 							"sid": 980760932027602,
 							"parameters": {
 								"instance-variable": "Health",
+								"value": "1"
+							}
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 714519849599373,
+							"parameters": {
+								"variable": "MonsterSpeed",
 								"value": "1"
 							}
 						},
@@ -280,10 +372,10 @@
 						{
 							"id": "add-to-eventvar",
 							"objectClass": "System",
-							"sid": 830930163726913,
+							"sid": 818286333072912,
 							"parameters": {
 								"variable": "Score",
-								"value": "1"
+								"value": "Monster.Bullet.Speed"
 							}
 						}
 					],
@@ -320,6 +412,14 @@
 							"id": "destroy",
 							"objectClass": "Player",
 							"sid": 567481748543817
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "GameOverText",
+							"sid": 241712626137015,
+							"parameters": {
+								"visibility": "visible"
+							}
 						}
 					],
 					"sid": 864071466163586

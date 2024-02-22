@@ -166,7 +166,8 @@
 			"ButtonLogout",
 			"TextCustomID",
 			"TextInputCustomID",
-			"ButtonLogin"
+			"ButtonLogin",
+			"GameOverText"
 		],
 		"subfolders": []
 	},
