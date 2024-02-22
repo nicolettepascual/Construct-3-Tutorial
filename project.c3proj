@@ -197,7 +197,7 @@
 				{
 					"name": "Import.js",
 					"type": "application/javascript",
-					"sid": 492022405828918,
+					"sid": 123377541296826,
 					"script-info": {
 						"purpose": "imports-for-events"
 					}
@@ -205,7 +205,7 @@
 				{
 					"name": "PlayFab.js",
 					"type": "application/javascript",
-					"sid": 644798203822711,
+					"sid": 631947964298085,
 					"script-info": {
 						"purpose": "main"
 					}
@@ -217,7 +217,7 @@
 						{
 							"name": "PlayFabClientApi.js",
 							"type": "application/javascript",
-							"sid": 907720866906584,
+							"sid": 540503119551133,
 							"script-info": {
 								"purpose": "none"
 							}
