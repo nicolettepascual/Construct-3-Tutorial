@@ -167,7 +167,15 @@
 			"TextCustomID",
 			"TextInputCustomID",
 			"ButtonLogin",
-			"GameOverText"
+			"GameOverText",
+			"TextEmail",
+			"TextInputEmail",
+			"TextInputPassword",
+			"ButtonRegister",
+			"TextEmailError",
+			"TextInputUserName",
+			"TextUserName",
+			"ButtonAddUP"
 		],
 		"subfolders": []
 	},

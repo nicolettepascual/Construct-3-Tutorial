@@ -1,0 +1,14 @@
+{
+	"name": "TextInputEmail",
+	"plugin-id": "TextBox",
+	"sid": 346467823508170,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 274221276230712
+		}
+	]
+}

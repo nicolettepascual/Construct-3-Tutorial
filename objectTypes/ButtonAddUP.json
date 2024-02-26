@@ -1,0 +1,22 @@
+{
+	"name": "ButtonAddUP",
+	"plugin-id": "Button",
+	"sid": 531899668807040,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "ButtonID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 867596431185968
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 875740617274390
+		}
+	]
+}

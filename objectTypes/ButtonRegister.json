@@ -1,0 +1,14 @@
+{
+	"name": "ButtonRegister",
+	"plugin-id": "Button",
+	"sid": 513419319464783,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pin",
+			"name": "Pin",
+			"sid": 693198234414240
+		}
+	]
+}

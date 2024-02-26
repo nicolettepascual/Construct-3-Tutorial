@@ -17,11 +17,11 @@
 			"eventType": "variable",
 			"name": "kPlayFabTitleID",
 			"type": "string",
-			"initialValue": "C8788",
+			"initialValue": "11C71",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
-			"sid": 316482763403857
+			"sid": 345059716522863
 		},
 		{
 			"eventType": "comment",
@@ -35,7 +35,7 @@
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
-			"sid": 934780689064937
+			"sid": 434548165688972
 		},
 		{
 			"eventType": "comment",
@@ -54,7 +54,7 @@
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
-					"sid": 231827953971055
+					"sid": 293893615677297
 				}
 			],
 			"eventType": "function-block",
@@ -67,19 +67,19 @@
 				{
 					"id": "wait-for-previous-actions",
 					"objectClass": "System",
-					"sid": 408150906766456
+					"sid": 192683659449178
 				},
 				{
 					"id": "log",
 					"objectClass": "Browser",
-					"sid": 406419919272774,
+					"sid": 747311300311306,
 					"parameters": {
 						"type": "log",
 						"message": "\"Leaderboard done.\""
 					}
 				}
 			],
-			"sid": 916762421264684,
+			"sid": 204331388228894,
 			"children": [
 				{
 					"eventType": "comment",
@@ -93,7 +93,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 381654606307200
+					"sid": 222149477158456
 				},
 				{
 					"eventType": "block",
@@ -106,7 +106,7 @@
 						{
 							"id": "set-size",
 							"objectClass": "ArrayLeaderboard",
-							"sid": 341150006009736,
+							"sid": 472608604108235,
 							"parameters": {
 								"width": "paramCount",
 								"height": "2",
@@ -116,7 +116,7 @@
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 608739226758472,
+							"sid": 669704366789057,
 							"parameters": {
 								"type": "log",
 								"message": "\"Array width=\" & paramCount"
@@ -125,14 +125,14 @@
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 772551294757087,
+							"sid": 910342992432836,
 							"parameters": {
 								"type": "log",
 								"message": "\"Data width=\" & localLeaderboardCount"
 							}
 						}
 					],
-					"sid": 445762772116207
+					"sid": 659314614144784
 				},
 				{
 					"eventType": "block",
@@ -140,7 +140,7 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 726017585480828,
+							"sid": 787648817263294,
 							"parameters": {
 								"variable": "localLeaderboardCount",
 								"comparison": 4,
@@ -149,7 +149,7 @@
 						}
 					],
 					"actions": [],
-					"sid": 964094854064238,
+					"sid": 520155636951147,
 					"children": [
 						{
 							"eventType": "variable",
@@ -159,7 +159,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 342495848205258
+							"sid": 769580999276375
 						},
 						{
 							"eventType": "variable",
@@ -169,7 +169,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 901408706935101
+							"sid": 603221040174251
 						},
 						{
 							"eventType": "variable",
@@ -179,7 +179,7 @@
 							"comment": "",
 							"isStatic": false,
 							"isConstant": false,
-							"sid": 893818126968599
+							"sid": 853610333054593
 						},
 						{
 							"eventType": "block",
@@ -187,7 +187,7 @@
 								{
 									"id": "for",
 									"objectClass": "System",
-									"sid": 771805755133830,
+									"sid": 562236416116767,
 									"parameters": {
 										"name": "\"\"",
 										"start-index": "0",
@@ -196,7 +196,7 @@
 								}
 							],
 							"actions": [],
-							"sid": 369263126474454,
+							"sid": 255339621894746,
 							"children": [
 								{
 									"eventType": "block",
@@ -204,7 +204,7 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 182909216899776,
+											"sid": 554016578406644,
 											"parameters": {
 												"first-value": "loopindex",
 												"comparison": 2,
@@ -216,7 +216,7 @@
 										{
 											"id": "set-eventvar-value",
 											"objectClass": "System",
-											"sid": 136676367416741,
+											"sid": 360423042541631,
 											"parameters": {
 												"variable": "localIndex",
 												"value": "loopindex"
@@ -229,7 +229,7 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "ArrayLeaderboard",
-											"sid": 352119828987682,
+											"sid": 167648414245543,
 											"parameters": {
 												"x": "loopindex",
 												"y": "0",
@@ -239,7 +239,7 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "ArrayLeaderboard",
-											"sid": 549849815740368,
+											"sid": 263032720155159,
 											"parameters": {
 												"x": "loopindex",
 												"y": "1",
@@ -249,14 +249,14 @@
 										{
 											"id": "log",
 											"objectClass": "Browser",
-											"sid": 532572115658865,
+											"sid": 973060283178711,
 											"parameters": {
 												"type": "log",
 												"message": "\"LB(\" & loopindex & \"):\" & localStatName & \",\" & localStatScore"
 											}
 										}
 									],
-									"sid": 572328656897911
+									"sid": 868935101594030
 								},
 								{
 									"eventType": "block",
@@ -264,14 +264,14 @@
 										{
 											"id": "else",
 											"objectClass": "System",
-											"sid": 481327554857423
+											"sid": 582255790199400
 										}
 									],
 									"actions": [
 										{
 											"id": "set-at-xy",
 											"objectClass": "ArrayLeaderboard",
-											"sid": 261411034660166,
+											"sid": 870812058706418,
 											"parameters": {
 												"x": "loopindex",
 												"y": "0",
@@ -281,7 +281,7 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "ArrayLeaderboard",
-											"sid": 750252280843312,
+											"sid": 402009758429742,
 											"parameters": {
 												"x": "loopindex",
 												"y": "1",
@@ -289,7 +289,7 @@
 											}
 										}
 									],
-									"sid": 353841131063756
+									"sid": 950728233519916
 								}
 							]
 						}
@@ -314,7 +314,7 @@
 					"type": "number",
 					"initialValue": "0",
 					"comment": "",
-					"sid": 652476339303386
+					"sid": 740146368943685
 				}
 			],
 			"eventType": "function-block",
@@ -327,19 +327,19 @@
 				{
 					"id": "wait-for-previous-actions",
 					"objectClass": "System",
-					"sid": 109918122451367
+					"sid": 703655161658063
 				},
 				{
 					"id": "log",
 					"objectClass": "Browser",
-					"sid": 970829966809965,
+					"sid": 181746288766749,
 					"parameters": {
 						"type": "log",
 						"message": "\"HighScore submitted: \" & Score"
 					}
 				}
 			],
-			"sid": 101707660135513
+			"sid": 367878940306177
 		},
 		{
 			"functionName": "GetUserDataFromPlayFab",
@@ -354,7 +354,7 @@
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 238333606472844
+					"sid": 380924457308320
 				}
 			],
 			"eventType": "function-block",
@@ -367,10 +367,10 @@
 				{
 					"id": "wait-for-previous-actions",
 					"objectClass": "System",
-					"sid": 712850433733809
+					"sid": 209138235417422
 				}
 			],
-			"sid": 659813401954399
+			"sid": 417377344877189
 		},
 		{
 			"eventType": "comment",
@@ -389,20 +389,20 @@
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 647394670667250
+					"sid": 472351778944153
 				},
 				{
 					"name": "paramDataString",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 913214579964854
+					"sid": 607834529372275
 				}
 			],
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 647397587213229,
+			"sid": 313664683508237,
 			"children": [
 				{
 					"eventType": "block",
@@ -415,19 +415,19 @@
 						{
 							"id": "wait-for-previous-actions",
 							"objectClass": "System",
-							"sid": 850860920115747
+							"sid": 790844475191089
 						},
 						{
 							"id": "log",
 							"objectClass": "Browser",
-							"sid": 598367893438998,
+							"sid": 511630741345847,
 							"parameters": {
 								"type": "log",
 								"message": "\"Dictionary submitted - \" & paramUserDataID & \",\" & paramDataString"
 							}
 						}
 					],
-					"sid": 345068508385887
+					"sid": 479391583977939
 				}
 			]
 		},
@@ -446,7 +446,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 842629919087679,
+			"sid": 422808964609987,
 			"children": [
 				{
 					"eventType": "variable",
@@ -456,7 +456,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 230744941533134
+					"sid": 102194294568798
 				},
 				{
 					"eventType": "block",
@@ -469,13 +469,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 410662654093617,
+							"sid": 809134764020697,
 							"parameters": {
 								"value": "localPlayFabId"
 							}
 						}
 					],
-					"sid": 597797996045666
+					"sid": 814871469961030
 				}
 			]
 		},
@@ -492,13 +492,13 @@
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 896788734026538
+					"sid": 988444468729312
 				}
 			],
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 302647961963484,
+			"sid": 498829719087891,
 			"children": [
 				{
 					"eventType": "variable",
@@ -508,7 +508,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 529025612517961
+					"sid": 450050615532161
 				},
 				{
 					"eventType": "block",
@@ -521,13 +521,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 233786837934892,
+							"sid": 236000150259241,
 							"parameters": {
 								"value": "localData"
 							}
 						}
 					],
-					"sid": 483002798287570
+					"sid": 204380444757068
 				}
 			]
 		},
@@ -542,7 +542,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 611549020131689,
+			"sid": 595031931777862,
 			"children": [
 				{
 					"eventType": "variable",
@@ -552,7 +552,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 302867965842682
+					"sid": 371052852551452
 				},
 				{
 					"eventType": "block",
@@ -563,7 +563,7 @@
 							"script": "localVars.localData = PlayFab_GetDisplayName();"
 						}
 					],
-					"sid": 776576224500019,
+					"sid": 173931943231400,
 					"children": [
 						{
 							"eventType": "block",
@@ -571,7 +571,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 110571629015779,
+									"sid": 493317133743592,
 									"parameters": {
 										"first-value": "len(localData)",
 										"comparison": 0,
@@ -585,7 +585,7 @@
 									"script": "localVars.localData = PlayFab_GetPlayFabID();"
 								}
 							],
-							"sid": 870834895369124
+							"sid": 770238199682513
 						}
 					]
 				},
@@ -596,13 +596,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 873073792561866,
+							"sid": 963943581712521,
 							"parameters": {
 								"value": "localData"
 							}
 						}
 					],
-					"sid": 778993066413207
+					"sid": 929750185875179
 				}
 			]
 		},
@@ -612,7 +612,7 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 720108515932079
+					"sid": 576697193854560
 				}
 			],
 			"actions": [
@@ -621,7 +621,7 @@
 					"script": "PlayFab_SetTitleId(runtime.globalVars.kPlayFabTitleID);"
 				}
 			],
-			"sid": 886650362316928,
+			"sid": 508208933815252,
 			"disabled": true
 		},
 		{
@@ -645,21 +645,21 @@
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 880930399037139
+					"sid": 838732829730538
 				},
 				{
 					"name": "paramPassword",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 542808527111570
+					"sid": 952020754531479
 				},
 				{
 					"name": "paramUsername",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 895965251589469
+					"sid": 254780540064149
 				}
 			],
 			"eventType": "function-block",
@@ -672,10 +672,10 @@
 				{
 					"id": "wait-for-previous-actions",
 					"objectClass": "System",
-					"sid": 787148284069378
+					"sid": 108626219265198
 				}
 			],
-			"sid": 493071125331261
+			"sid": 367059372015187
 		},
 		{
 			"functionName": "PlayFabError_RegisterUser",
@@ -688,7 +688,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 688587047154592,
+			"sid": 426789703826187,
 			"children": [
 				{
 					"eventType": "variable",
@@ -698,7 +698,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 514192796488296
+					"sid": 718580301222773
 				},
 				{
 					"eventType": "block",
@@ -711,13 +711,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 194523859793722,
+							"sid": 171896367187141,
 							"parameters": {
 								"value": "localData"
 							}
 						}
 					],
-					"sid": 880293686328729
+					"sid": 563974003044887
 				}
 			]
 		},
@@ -732,7 +732,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 328394402506453,
+			"sid": 126197830475027,
 			"children": [
 				{
 					"eventType": "variable",
@@ -742,7 +742,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 737324040252081
+					"sid": 768494501052887
 				},
 				{
 					"eventType": "block",
@@ -755,13 +755,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 189740527100612,
+							"sid": 851896301515410,
 							"parameters": {
 								"value": "localData"
 							}
 						}
 					],
-					"sid": 788716937881094
+					"sid": 783648865880325
 				}
 			]
 		},
@@ -776,7 +776,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 278370377753007,
+			"sid": 486437625132750,
 			"children": [
 				{
 					"eventType": "block",
@@ -784,7 +784,7 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 444359370853709,
+							"sid": 908635508810209,
 							"parameters": {
 								"first-value": "len(Functions.PlayFabID)",
 								"comparison": 4,
@@ -796,13 +796,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 769114022500003,
+							"sid": 380292836729752,
 							"parameters": {
 								"value": "1"
 							}
 						}
 					],
-					"sid": 426097237213900
+					"sid": 481915778185826
 				}
 			]
 		},
@@ -817,7 +817,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 454270514473540,
+			"sid": 122923015785131,
 			"children": [
 				{
 					"eventType": "block",
@@ -825,7 +825,7 @@
 						{
 							"id": "compare-two-values",
 							"objectClass": "System",
-							"sid": 524041378804254,
+							"sid": 174133898543871,
 							"parameters": {
 								"first-value": "len(Functions.PlayFabError_Login)",
 								"comparison": 4,
@@ -837,13 +837,13 @@
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
-							"sid": 183859709199497,
+							"sid": 333684879192767,
 							"parameters": {
 								"value": "1"
 							}
 						}
 					],
-					"sid": 119192071312344
+					"sid": 645909967885847
 				}
 			]
 		},
@@ -860,21 +860,21 @@
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 623737830594031
+					"sid": 721105906995698
 				},
 				{
 					"name": "paramPassword",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 678971964333305
+					"sid": 754847495657603
 				},
 				{
 					"name": "paramUsername",
 					"type": "string",
 					"initialValue": "",
 					"comment": "",
-					"sid": 304489307633318
+					"sid": 594413590392144
 				}
 			],
 			"eventType": "function-block",
@@ -885,7 +885,7 @@
 					"script": "await PlayFab_AddUsernamePassword(localVars.paramEmail, localVars.paramPassword, localVars.paramUsername);"
 				}
 			],
-			"sid": 988436775623755
+			"sid": 795667256507513
 		},
 		{
 			"eventType": "group",
@@ -911,7 +911,7 @@
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 279642636190679
+							"sid": 837173899546667
 						}
 					],
 					"eventType": "function-block",
@@ -924,10 +924,10 @@
 						{
 							"id": "wait-for-previous-actions",
 							"objectClass": "System",
-							"sid": 463835390551482
+							"sid": 822091023269477
 						}
 					],
-					"sid": 566899506625317
+					"sid": 247815670087187
 				},
 				{
 					"functionName": "LoginWithEmailPlayFab",
@@ -942,14 +942,14 @@
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 562793725250672
+							"sid": 216454982175140
 						},
 						{
 							"name": "paramPassword",
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 132207976791173
+							"sid": 917569527036837
 						}
 					],
 					"eventType": "function-block",
@@ -962,10 +962,10 @@
 						{
 							"id": "wait-for-previous-actions",
 							"objectClass": "System",
-							"sid": 171057057218363
+							"sid": 623636822692122
 						}
 					],
-					"sid": 314471555878806
+					"sid": 113507742780659
 				},
 				{
 					"functionName": "LoginWithPlayFab",
@@ -980,14 +980,14 @@
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 108844010854969
+							"sid": 175546631305238
 						},
 						{
 							"name": "paramPassword",
 							"type": "string",
 							"initialValue": "",
 							"comment": "",
-							"sid": 128454702332851
+							"sid": 136287012937167
 						}
 					],
 					"eventType": "function-block",
@@ -1000,13 +1000,13 @@
 						{
 							"id": "wait-for-previous-actions",
 							"objectClass": "System",
-							"sid": 501374214372615
+							"sid": 677133529538704
 						}
 					],
-					"sid": 155542200818861
+					"sid": 173625325430765
 				}
 			],
-			"sid": 503266888685079
+			"sid": 617986391765214
 		},
 		{
 			"functionName": "ResetPlayFabID",
@@ -1024,7 +1024,7 @@
 					"script": "PlayFab_ResetPlayFabID();"
 				}
 			],
-			"sid": 728285215390330
+			"sid": 860054546104011
 		},
 		{
 			"functionName": "HasUserAccountError",
@@ -1037,7 +1037,7 @@
 			"eventType": "function-block",
 			"conditions": [],
 			"actions": [],
-			"sid": 976362526827384,
+			"sid": 801424570260961,
 			"children": [
 				{
 					"eventType": "variable",
@@ -1047,7 +1047,7 @@
 					"comment": "",
 					"isStatic": false,
 					"isConstant": false,
-					"sid": 358837902323606
+					"sid": 505446381098965
 				},
 				{
 					"eventType": "block",
@@ -1058,7 +1058,7 @@
 							"script": "localVars.localData = PlayFab_Error(\"GetAccountInfo\");"
 						}
 					],
-					"sid": 116155342573443,
+					"sid": 897351637153663,
 					"children": [
 						{
 							"eventType": "block",
@@ -1066,7 +1066,7 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 407832886423769,
+									"sid": 384319362769576,
 									"parameters": {
 										"first-value": "len(localData)",
 										"comparison": 4,
@@ -1078,13 +1078,13 @@
 								{
 									"id": "set-function-return-value",
 									"objectClass": "Functions",
-									"sid": 858582473731217,
+									"sid": 888751999359661,
 									"parameters": {
 										"value": "1"
 									}
 								}
 							],
-							"sid": 359959469695388
+							"sid": 226722227360998
 						}
 					]
 				}
@@ -1096,7 +1096,7 @@
 				{
 					"id": "on-start-of-layout",
 					"objectClass": "System",
-					"sid": 317875781152951
+					"sid": 844411770496826
 				}
 			],
 			"actions": [
@@ -1105,8 +1105,8 @@
 					"script": "PlayFab_LogSDKDetails();"
 				}
 			],
-			"sid": 846092132564559
+			"sid": 408425698649285
 		}
 	],
-	"sid": 603095362258106
+	"sid": 530298867963850
 }
